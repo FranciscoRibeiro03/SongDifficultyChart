@@ -1,0 +1,18 @@
+{
+	"_QPVersion": "0.1.1",
+	"name": "SongDifficultyChart",
+	"id": "SongDifficultyChart",
+	"author": "Made by Henwill, upheld by Nuggo",
+	"version": "0.1.0",
+	"packageId": "com.beatgames.beatsaber",
+	"packageVersion": "1.21.0",
+	"description": "View the difficulty of the song mid-map!",
+	"dependencies": [],
+	"modFiles": [
+		"libSongDifficultyChart.so"
+	],
+	"libraryFiles": [
+		"libbeatsaber-hook_3_8_5.so"
+	],
+	"fileCopies": []
+}
