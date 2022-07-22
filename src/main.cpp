@@ -62,6 +62,8 @@ extern "C" void load() {
 
     getLogger().info("Installed QuestUI!");
 
+    getModConfig().Init(modInfo);
+
     getLogger().info("Installing SongDifficultyChart hooks");
     
     auto& logger = getLogger();
