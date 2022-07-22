@@ -22,6 +22,15 @@ void DidActivate(HMUI::ViewController *self, bool firstActivation, bool addedToH
         UnityEngine::GameObject *container = QuestUI::BeatSaberUI::CreateScrollView(self->get_transform());
 
         AddConfigValueToggle(container->get_transform(), getModConfig().Enabled)->get_gameObject();
+
+        // MAKE MINI PREVIEW TO SEE UPDATES
+        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().XPos, 0, 1.0f, -20.0f, 20.0f);
+        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().YPos, 0, 1.0f, -20.0f, 20.0f);
+        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().ZPos, 0, 1.0f, -20.0f, 20.0f);
+
+        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().XRot, 0, 1.0f, -180.0f, 180.0f);
+        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().YRot, 0, 1.0f, -180.0f, 180.0f);
+        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().ZRot, 0, 1.0f, -180.0f, 180.0f);
     }
 }
 
