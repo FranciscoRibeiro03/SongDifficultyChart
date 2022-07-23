@@ -1,16 +1,4 @@
-#include "main.hpp"
-#include "modloader/shared/modloader.hpp"
-#include "ModConfig.hpp"
-#include "hooks.hpp"
-
-#include "beatsaber-hook/shared/utils/hooking.hpp"
-#include "beatsaber-hook/shared/utils/logging.hpp"
-
-#include "questui/shared/QuestUI.hpp"
-#include "questui/shared/BeatSaberUI.hpp"
-
-using namespace QuestUI;
-using namespace QuestUI::BeatSaberUI;
+#include "IncludesList.hpp"
 
 DEFINE_CONFIG(ModConfig);
 
@@ -31,11 +19,11 @@ void DidActivate(HMUI::ViewController *self, bool firstActivation, bool addedToH
         AddConfigValueIncrementFloat(container->get_transform(), getModConfig().XRot, 0, 1.0f, -180.0f, 180.0f);
         AddConfigValueIncrementFloat(container->get_transform(), getModConfig().YRot, 0, 1.0f, -180.0f, 180.0f);
         AddConfigValueIncrementFloat(container->get_transform(), getModConfig().ZRot, 0, 1.0f, -180.0f, 180.0f);
+
+
+
     }
 }
-
-
-
 
 // Loads the config from disk using our modInfo, then returns it for use
 Configuration& getConfig() {

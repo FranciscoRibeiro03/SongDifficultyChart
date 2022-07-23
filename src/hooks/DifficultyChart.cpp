@@ -1,16 +1,7 @@
-#include "hooks.hpp"
-#include "modloader/shared/modloader.hpp"
-#include "ModConfig.hpp"
-#include "main.hpp"
-
-#include "questui/shared/QuestUI.hpp"
-#include "questui/shared/BeatSaberUI.hpp"
-
-#include "GlobalNamespace/GameplayCoreInstaller.hpp"
+#include "IncludesList.hpp"
 
 using namespace GlobalNamespace;
 using namespace UnityEngine;
-using namespace QuestUI::BeatSaberUI;
 
 MAKE_AUTO_HOOK_MATCH(DifficultyChart, &GlobalNamespace::GameplayCoreInstaller::InstallBindings, void, GlobalNamespace::GameplayCoreInstaller *self) {
 
@@ -21,10 +12,11 @@ MAKE_AUTO_HOOK_MATCH(DifficultyChart, &GlobalNamespace::GameplayCoreInstaller::I
         UnityEngine::Vector3(getModConfig().XRot.GetValue(), getModConfig().YRot.GetValue(), getModConfig().ZRot.GetValue()), 0.0f, true, true, 3);
     
         QuestUI::BeatSaberUI::CreateText(screen->get_transform(), "Test", UnityEngine::Vector2(15.0f, 0.0f));
-    
+
+        Resources::FindObjectsOfTypeAll<MenuTransitionsHelper*>()[0]->RestartGame(nullptr);
     }
-    else {
-        
+    else if (getModConfig().Enabled.GetValue() == false) {
+        Resources::FindObjectsOfTypeAll<MenuTransitionsHelper*>()[0]->RestartGame(nullptr);
     }
 
     
