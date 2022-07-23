@@ -12,15 +12,20 @@ void DidActivate(HMUI::ViewController *self, bool firstActivation, bool addedToH
         AddConfigValueToggle(container->get_transform(), getModConfig().Enabled)->get_gameObject();
 
         // MAKE MINI PREVIEW TO SEE UPDATES
-        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().XPos, 0, 1.0f, -20.0f, 20.0f);
-        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().YPos, 0, 1.0f, -20.0f, 20.0f);
-        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().ZPos, 0, 1.0f, -20.0f, 20.0f);
+        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().XPos, 0, 0.5f, -20.0f, 20.0f);
+        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().YPos, 0, 0.5f, -20.0f, 20.0f);
+        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().ZPos, 0, 0.5f, -20.0f, 20.0f);
 
         AddConfigValueIncrementFloat(container->get_transform(), getModConfig().XRot, 0, 1.0f, -180.0f, 180.0f);
         AddConfigValueIncrementFloat(container->get_transform(), getModConfig().YRot, 0, 1.0f, -180.0f, 180.0f);
         AddConfigValueIncrementFloat(container->get_transform(), getModConfig().ZRot, 0, 1.0f, -180.0f, 180.0f);
 
+        // MINI PREVIEW
+        float xPos = getModConfig().XPos.GetValue() / 2;
+        float yPos = getModConfig().YPos.GetValue() / 2;
+        float zPos = getModConfig().ZPos.GetValue() / 2;
 
+        UnityEngine::GameObject *miniScreen = QuestUI::BeatSaberUI::CreateFloatingScreen(UnityEngine::Vector2(45.0f, 25.0f), UnityEngine::Vector3(xPos, yPos, zPos), UnityEngine::Vector3(45.0f, 0.0f, 0.0f), 0.0f, true, true, 4);
 
     }
 }
