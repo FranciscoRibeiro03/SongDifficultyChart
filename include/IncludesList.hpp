@@ -14,6 +14,4 @@
 
 #include "UnityEngine/Resources.hpp"
 
-using namespace UnityEngine;
-using namespace QuestUI;
-using namespace QuestUI::BeatSaberUI;
+#include "codegen/include/System/Environment.hpp"

@@ -12,6 +12,8 @@ DECLARE_CONFIG(ModConfig,
     CONFIG_VALUE(YRot, float, "Change Y Rotation", 0.0f);
     CONFIG_VALUE(ZRot, float, "Change Z Rotation", 0.0f)
 
+    CONFIG_VALUE(EnableEnvironment, bool, "Load Preview Environment", true);
+
     CONFIG_INIT_FUNCTION(
 
         CONFIG_INIT_VALUE(Enabled);
@@ -21,6 +23,8 @@ DECLARE_CONFIG(ModConfig,
         CONFIG_INIT_VALUE(XRot);
         CONFIG_INIT_VALUE(YRot);
         CONFIG_INIT_VALUE(ZRot);
+
+        CONFIG_INIT_VALUE(EnableEnvironment);
     )
 
 )
