@@ -12,7 +12,9 @@ DECLARE_CONFIG(ModConfig,
     CONFIG_VALUE(YRot, float, "Change Y Rotation", 0.0f);
     CONFIG_VALUE(ZRot, float, "Change Z Rotation", 0.0f)
 
-    CONFIG_VALUE(EnableEnvironment, bool, "Load Preview Environment", true);
+    CONFIG_VALUE(SoftRestart, bool, "Show Changes", false);
+
+    CONFIG_VALUE(meme, std::string, "Change Test Button Text", "Meme");
 
     CONFIG_INIT_FUNCTION(
 
@@ -24,7 +26,9 @@ DECLARE_CONFIG(ModConfig,
         CONFIG_INIT_VALUE(YRot);
         CONFIG_INIT_VALUE(ZRot);
 
-        CONFIG_INIT_VALUE(EnableEnvironment);
+        CONFIG_INIT_VALUE(SoftRestart);
+
+        CONFIG_INIT_VALUE(meme);
     )
 
 )

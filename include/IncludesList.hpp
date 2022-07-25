@@ -13,5 +13,6 @@
 #include "GlobalNamespace/MenuTransitionsHelper.hpp"
 
 #include "UnityEngine/Resources.hpp"
+#include "UnityEngine/UI/LayoutElement.hpp"
 
 #include "codegen/include/System/Environment.hpp"
