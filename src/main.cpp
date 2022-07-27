@@ -24,6 +24,13 @@ void DidActivate(HMUI::ViewController *self, bool firstActivation, bool addedToH
         AddConfigValueIncrementFloat(container->get_transform(), getModConfig().YRot, 0, 1.0f, -180.0f, 180.0f);
         AddConfigValueIncrementFloat(container->get_transform(), getModConfig().ZRot, 0, 1.0f, -180.0f, 180.0f);
 
+        // Actual Graph options
+        AddConfigValueToggle(container->get_transform(), getModConfig().)
+
+        QuestUI::BeatSaberUI::CreateUIButton(self->get_transform(), "Refresh", UnityEngine::Vector2(60.0f, 0.0f), UnityEngine::Vector2(20.0f, 10.0f), []() {
+            Resources::FindObjectsOfTypeAll<MenuTransitionsHelper *>()[0]->RestartGame(nullptr);
+        });
+
         UnityEngine::Transform *parent = container->get_transform();
         auto layout = QuestUI::BeatSaberUI::CreateHorizontalLayoutGroup(parent);    layout->GetComponent<UnityEngine::UI::LayoutElement *>()->set_preferredWidth(90.0f);
         layout->set_childControlWidth(true);
@@ -33,10 +40,10 @@ void DidActivate(HMUI::ViewController *self, bool firstActivation, bool addedToH
 
         // MINI PREVIEW
 
-        UnityEngine::GameObject *
+        //UnityEngine::GameObject *
 
         UnityEngine::GameObject *miniScreen = QuestUI::BeatSaberUI::CreateFloatingScreen(UnityEngine::Vector2(45.0f, 25.0f),
-        UnityEngine::Vector3(getModConfig().XPos.GetValue() / 5, getModConfig().YPos.GetValue() / 5, getModConfig().ZPos.GetValue()),
+        UnityEngine::Vector3(getModConfig().XPos.GetValue(), getModConfig().YPos.GetValue(), getModConfig().ZPos.GetValue()),
         UnityEngine::Vector3(45.0f, 0.0f, 0.0f), 0.0f, true, true, 5);
         //if (QuestUI::BeatSaberUI::)
 
