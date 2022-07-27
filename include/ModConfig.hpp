@@ -10,7 +10,9 @@ DECLARE_CONFIG(ModConfig,
     CONFIG_VALUE(ZPos, float, "Change Z Position", 3.0f);
     CONFIG_VALUE(XRot, float, "Change X Rotation", 45.0f);
     CONFIG_VALUE(YRot, float, "Change Y Rotation", 0.0f);
-    CONFIG_VALUE(ZRot, float, "Change Z Rotation", 0.0f)
+    CONFIG_VALUE(ZRot, float, "Change Z Rotation", 0.0f);
+
+    CONFIG_VALUE(Frequency, float, "Change The Point Frequency", 1.0f);
 
     CONFIG_VALUE(SoftRestart, bool, "Show Changes", false);
 
@@ -25,6 +27,8 @@ DECLARE_CONFIG(ModConfig,
         CONFIG_INIT_VALUE(XRot);
         CONFIG_INIT_VALUE(YRot);
         CONFIG_INIT_VALUE(ZRot);
+
+        CONFIG_INIT_VALUE(Frequency);
 
         CONFIG_INIT_VALUE(SoftRestart);
 

@@ -6,6 +6,11 @@ using namespace UnityEngine;
 using namespace QuestUI;
 using namespace QuestUI::BeatSaberUI;
 
+
+
+float spacing = 0.1f;
+
+
 MAKE_AUTO_HOOK_MATCH(DifficultyChart, &GlobalNamespace::GameplayCoreInstaller::InstallBindings, void, GlobalNamespace::GameplayCoreInstaller *self) {
 
     DifficultyChart(self);
