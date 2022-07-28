@@ -9,23 +9,11 @@ static ModInfo modInfo; // Stores the ID and version of our mod, and is sent to 
 
 void DidActivate(HMUI::ViewController *self, bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling) {
 
-    if(firstActivation) {
+    if (firstActivation) {
         UnityEngine::GameObject *container = QuestUI::BeatSaberUI::CreateScrollView(self->get_transform());
-        //UnityEngine::GameObject *floatContainer = QuestUI::BeatSaberUI::
 
-        AddConfigValueToggle(container->get_transform(), getModConfig().Enabled)->get_gameObject();
-
-        // MAKE MINI PREVIEW TO SEE UPDATES
-        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().XPos, 0, 0.5f, -20.0f, 20.0f);
-        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().YPos, 0, 0.5f, -20.0f, 20.0f);
-        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().ZPos, 0, 0.5f, -20.0f, 20.0f);
-
-        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().XRot, 0, 1.0f, -180.0f, 180.0f);
-        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().YRot, 0, 1.0f, -180.0f, 180.0f);
-        AddConfigValueIncrementFloat(container->get_transform(), getModConfig().ZRot, 0, 1.0f, -180.0f, 180.0f);
-
-        // Actual Graph options
-        AddConfigValueToggle(container->get_transform(), getModConfig().)
+        AddConfigValueIncrementVector3(container->get_transform(), getModConfig().Positions, 2, 1.0f);
+        AddConfigValueIncrementVector3(container->get_transform(), getModConfig().Rotations, 2, 1.0f);
 
         QuestUI::BeatSaberUI::CreateUIButton(self->get_transform(), "Refresh", UnityEngine::Vector2(60.0f, 0.0f), UnityEngine::Vector2(20.0f, 10.0f), []() {
             Resources::FindObjectsOfTypeAll<MenuTransitionsHelper *>()[0]->RestartGame(nullptr);
@@ -33,23 +21,18 @@ void DidActivate(HMUI::ViewController *self, bool firstActivation, bool addedToH
 
         UnityEngine::Transform *parent = container->get_transform();
         auto layout = QuestUI::BeatSaberUI::CreateHorizontalLayoutGroup(parent);    layout->GetComponent<UnityEngine::UI::LayoutElement *>()->set_preferredWidth(90.0f);
-        layout->set_childControlWidth(true);
         auto layoutParent = layout->get_transform();
 
         auto stringSetting = AddConfigValueStringSetting(layoutParent, getModConfig().meme);
 
-        // MINI PREVIEW
-
-        //UnityEngine::GameObject *
-
-        UnityEngine::GameObject *miniScreen = QuestUI::BeatSaberUI::CreateFloatingScreen(UnityEngine::Vector2(45.0f, 25.0f),
-        UnityEngine::Vector3(getModConfig().XPos.GetValue(), getModConfig().YPos.GetValue(), getModConfig().ZPos.GetValue()),
-        UnityEngine::Vector3(45.0f, 0.0f, 0.0f), 0.0f, true, true, 5);
-        //if (QuestUI::BeatSaberUI::)
-
-        UnityEngine::GameObject *settingsConsole = QuestUI::BeatSaberUI::CreateFloatingScreen(UnityEngine::Vector2(25.0f, 45.0f), UnityEngine::Vector3(-2.0f, 0.0f, 0.0f), UnityEngine::Vector3(0.0f, 25.0f, 0.0f), 0.0f, true, false);
     }
 }
+
+void DidDeactivate(bool removedFromHierarchy, bool screenSystemDisabling) {
+    UnityEngine::Resources::FindObjectsOfTypeAll<MenuTransitionsHelper *>()[0]->RestartGame(nullptr);
+}
+
+
 
 // Loads the config from disk using our modInfo, then returns it for use
 Configuration& getConfig() {
